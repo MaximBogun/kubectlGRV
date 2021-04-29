@@ -9,8 +9,8 @@ Map evnDic = [
         'int': 'someSsh'
 ]
 Map commandOfArg = stream(input.split(" "))
-        .filter { arg -> commands.findAll({ a -> arg.contains(a) }).any() }.
-        flatMap({ arg -> stream(arg.strip().split("=")) })
+        .filter { arg -> commands.findAll({ a -> arg.contains(a)}).any() }
+        .flatMap({ arg -> stream(arg.strip().split("=")) })
         .collect(Collectors.toList()).toSpreadMap()
 def host = evnDic[commandOfArg['env'] as String]
 def sout = new StringBuilder(), serr = new StringBuilder()
